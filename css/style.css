@@ -1,0 +1,142 @@
+:root {
+  --primary-blue: hsl(238, 29%, 16%);
+  --primary-red: hsl(14, 88%, 65%);
+  --dark-font: hsl(237, 12%, 33%);
+  --light-font: hsl(240, 6%, 50%);
+  --dividers: hsl(240, 5%, 91%);
+}
+
+html {
+  font-size: .875rem;
+  font-family: 'Kumbh Sans', sans-serif;
+  min-height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+body {
+  background: rgb(175,103,233);
+  background: linear-gradient(180deg, rgba(175,103,233,1) 0%, rgba(101,101,231,1) 100%) no-repeat;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.illustration {
+  width: 65%;
+  position: relative;
+  top: -100px;
+  margin: 0 auto;
+}
+
+.main-image {
+  max-width: 240px;
+  margin: 0 auto;
+}
+
+.main-image-desktop {
+  display: none;
+}
+
+.image-bg {
+  position: absolute; 
+  bottom: -30px; 
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%)
+}
+
+.image-bg-desktop {
+  display: none;
+}
+
+.faq {
+  background: #fff;
+  margin: 10rem 1.5rem 0;
+  border-radius: 24px;
+}
+
+.content {
+  position: relative;
+  top: -3rem;
+  margin: 0 1rem 0;
+}
+
+.content h1 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.questions {
+  margin-top: 1.5rem;
+}
+
+.questions dt {
+  padding: 1.2rem 0 1rem;
+  color: var(--dark-font);
+  transition: .3s;
+  margin: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.questions dt:hover {
+  cursor: pointer;
+  color: hsl(14, 88%, 65%);
+}
+
+.questions dt:not(:first-child) {
+  border-top: 1px solid var(--dividers);
+}
+
+.questions dt::after {
+  display: inline-block;
+  content: '';
+  width: 10px;
+  height: 7px;
+  background: url(../images/icon-arrow-down.svg) no-repeat;
+  min-width: 10px;
+}
+
+.questions dd {
+  color: var(--light-font);
+  font-size: .9rem;
+  padding: 0 1rem 1rem;
+  max-width: 95%;
+  line-height: 1.5;
+}
+
+@media (min-width: 900px) {
+  html {
+    font-size: 1rem;
+  }
+
+  .faq {
+    display: flex;
+  }
+
+  .main-image-desktop {
+    display: block;
+  }
+
+  .main-image {
+    display: none;
+  }
+
+  .image-bg {
+    display: none;
+  }
+
+  .image-bg-desktop {
+    display: block;
+  }
+}
