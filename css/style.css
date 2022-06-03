@@ -30,6 +30,14 @@ img {
   max-width: 100%;
 }
 
+.box-image {
+  display: none;
+}
+
+.main-image-desktop {
+  display: none;
+}
+
 .illustration {
   width: 65%;
   position: relative;
@@ -42,20 +50,12 @@ img {
   margin: 0 auto;
 }
 
-.main-image-desktop {
-  display: none;
-}
-
 .image-bg {
   position: absolute; 
   bottom: -30px; 
   left: 50%;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%)
-}
-
-.image-bg-desktop {
-  display: none;
 }
 
 .faq {
@@ -112,10 +112,19 @@ img {
 .questions dd {
   color: var(--light-font);
   font-size: .9rem;
-  padding: 0 1rem 1rem;
-  max-width: 95%;
+  max-width: 90%;
   line-height: 1.5;
-  display: none;
+
+  /* Related to appear and disappearing animation */
+  padding: 0 0 0 1rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  transition: padding 0.5s ease;
+
+  /* Used for better screen readers, but when collapsing the info, it's not smooth */
+    /* padding: 0 1rem 1rem; */
+    /* display: none; */
 }
 
 .questions dt.active {
@@ -127,22 +136,26 @@ img {
 }
 
 .questions dd.active {
-  display: block;
-  animation: showInfo .3s ease forwards;
+  max-height: 5rem;
+  padding: 0 1rem 1rem;
+  margin:0 0 1rem;
+
+    /* display: block; */
+    /* animation: showInfo .3s ease forwards; */
 }
 
-@keyframes showInfo {
-  from {
-    transform: translateY(-1rem);
-    opacity: 0;
-    max-height: 0px;
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    max-height: 200px;
-  }
-}
+  /* @keyframes showInfo {
+    from {
+      transform: translateY(-1rem);
+      opacity: 0;
+      max-height: 0px;
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      max-height: 200px;
+    }
+  } */
 
 @media (min-width: 600px) {
   html {
@@ -158,35 +171,42 @@ img {
     height: 100%;
   }
 
+  .box-image {
+    position: absolute;
+    display: block;
+    left: 0;
+    top: 58%;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    width: 17%;
+  }
+
   .faq {
     flex: 1;
     display: flex;
     position: relative;
     margin: 0 4rem;
-    overflow-y: hidden;
-    overflow-x: visible;
     max-width: 1100px;
     max-height: 60vh;
   }
 
   .illustration {
-    background-image: url(../images/illustration-woman-online-desktop.svg), url(../images/bg-pattern-desktop.svg);
+    background-image: url(../images/bg-pattern-desktop.svg);
     background-repeat: no-repeat;
-    background-size: contain, 200%;
-    background-position: -6rem center , -39rem -20rem;
+    background-size: 200%;
+    background-position: 115% 75%;
     background-clip: content-box;
     position: static;
     flex: 1 2;
     margin: 0;
     display: flex;
     align-items: center;
+    overflow: hidden;
   }
 
   .main-image-desktop {
     display: block;
-    position: absolute;
-    top: 40%;
-    left: -80px;
+    transform: translateX(-5rem);
   }
 
   .main-image,
@@ -216,5 +236,15 @@ img {
   .content::-webkit-scrollbar-thumb {
     background-color: hsl(273, 75%, 66%);
     border-radius: 10px;
+  }
+
+  .questions dd.active {
+    margin: 0;
+  }
+}
+
+@media (min-width: 1240px) {
+  .illustration {
+    background-position: -39.5rem -20rem;
   }
 }
